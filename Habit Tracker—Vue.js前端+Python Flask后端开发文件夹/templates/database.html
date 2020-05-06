@@ -1,0 +1,241 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" >
+    <title>习惯追踪应用程序后台管理系统</title>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../static/css/amaze.css" rel="stylesheet" >
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet"> 
+    <link href="../static/css/font-muli.css" rel='stylesheet' type='text/css'>
+    <link href="../static/css/themify-icons.css" rel="stylesheet"> 
+</head>
+<style>
+.content table thead td{
+    background-color: whitesmoke;
+    font-size: 15px;
+    width: 250px;
+}
+.content table tr td{
+    border-bottom: 2px solid rgb(225, 225, 225);
+}
+table td {
+    padding: 10px 10px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+table tr:nth-child(odd) {
+    background: white;
+}
+table tr:nth-child(even) {
+    background: whitesmoke;
+}
+.foot{
+    height: 30px;
+}
+</style>
+<body>
+    <div class="wrapper">
+        <!-- 左侧导航栏 -->
+		<div class="sidebar" data-background-color="brown" data-active-color="danger">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Habit Tracker Admin
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+				<ul class="nav">
+                    <li class="active">
+                        <a href="#">
+                            <i class="ti-view-list-alt"></i>
+                            <p>Tables</p>
+                        </a>
+                    </li>
+					<li id="btn">
+						<a href="#">
+							<i class="ti-help"></i>
+							<p>Documentation</p>
+						</a>
+					</li>
+				</ul>
+            </div>  
+        </div>
+        <!-- 右侧主体内容 -->
+        <div class="main-panel">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- 左上角 -->
+                    <div class="navbar-minimize">
+                        <button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+							<i class="ti-arrow-left"></i>
+                        </button>
+                    </div>
+                    <!-- 中间Tables -->
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">TABLES</a>
+                    </div>
+                    <!-- 右上角 -->
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+							<li>
+                                <a href="#">
+                                    <i class="ti-layout-grid3-alt"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="ti-user"></i>
+                                </a>
+                            </li>
+							<li>
+                                <a href="/">
+                                    <i class="ti-power-off"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- 内容 -->
+            <div class="content">
+                <h3>用户表</h3>
+                <!-- 1 -->
+                <table >
+                    <thead style="font-weight:bold; font-size:110%;">
+                        <td>ID</td>
+                        <td>电子邮箱</td>
+                        <td>用户名</td>
+                        <td>密码</td>
+                        <td>验证码</td>
+                        <td>操作</td>
+                    </thead>
+                    {% for row in rows1 %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>{{row[4]}}</td>
+                        <td>
+                            <a href="/update?id={{row[0]}}">修改</a>
+                            <a href="/del?id={{row[0]}}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <!-- 2 -->
+                <h3>习惯表</h3>
+                <table >
+                    <thead>
+                        <td>ID</td>
+                        <td>用户名</td>
+                        <td>习惯</td>
+                        <td>目标属性</td>
+                        <td>目标</td>
+                        <td>日期</td>
+                        <td>操作</td>
+                    </thead>
+                    {% for row in rows2 %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>{{row[4]}}</td>
+                        <td>{{row[5]}}</td>
+                        <td>
+                            <a href="/update2?id={{row[0]}}">修改</a>
+                            <a href="/del2?id={{row[0]}}">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+                <!-- 3 -->
+                <h3>习惯记录表</h3>
+                <table >
+                    <thead>
+                        <td>ID</td>
+                        <td>用户名</td>
+                        <td>习惯</td>
+                        <td>目标属性</td>
+                        <td>当日成就</td>
+                        <td>日期</td>
+                        <td>是否完成</td>
+                        <td>操作</td>
+                    </thead>
+                    {% for row in rows3 %}
+                        <tr>
+                            <td>{{row[0]}}</td>
+                            <td>{{row[1]}}</td>
+                            <td>{{row[2]}}</td>
+                            <td>{{row[3]}}</td>
+                            <td>{{row[4]}}</td>
+                            <td>{{row[5]}}</td>
+                            <td>{{row[6]}}</td>
+                            <td>
+                                <a href="/update3?id={{row[0]}}">修改</a>
+                                <a href="/del3?id={{row[0]}}">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <!-- 4 -->
+                <h3>管理员表</h3>
+                <table >
+                    <thead>
+                        <td>ID</td>
+                        <td>用户名</td>
+                        <td>密码</td>
+                        <td>操作</td>
+                    </thead>
+                    {% for row in rows4 %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>
+                            <a href="/update4?id={{row[0]}}">修改</a>
+                            <a href="/del4?id={{row[0]}}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <!-- 5 -->
+                <h3>意见反馈表</h3>
+                <table >
+                    <thead style="font-weight:bold; font-size:110%;">
+                        <td>ID</td>
+                        <td>用户名</td>
+                        <td>联系方式</td>
+                        <td>反馈内容</td>
+                        <td>提交日期</td>
+                        <td>操作</td>
+                    </thead>
+                    {% for row in rows5 %}
+                    <tr>
+                        <td>{{row[0]}}</td>
+                        <td>{{row[1]}}</td>
+                        <td>{{row[2]}}</td>
+                        <td>{{row[3]}}</td>
+                        <td>{{row[4]}}</td>
+                        <td>
+                            <a href="/del5?id={{row[0]}}">删除</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="foot"></div>
+        </div>
+    </div>
+    <script src="../static/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="../static/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../static/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="../static/js/amaze.js"></script>
+    <script>
+        var $eleBtn1 = $("#btn")
+        $eleBtn1.click(function(){
+                window.open("../static/后台管理手册.pdf");
+        });
+    </script>
+</body>
+</html>

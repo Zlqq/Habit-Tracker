@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="../static/css/login.css" rel="stylesheet" type="text/css" />
+    <title>后台管理登录</title>
+</head>
+<body>
+    <div class="login_box">
+        <div class="login_l_img"><img src="../static/images/login-img.png" /></div>
+        <div class="login">
+            <div class="login_logo"><a href="#"><img src="../static/images/login_logo.png" /></a></div>
+            <div class="login_name">
+                    <p>后台管理系统</p>
+            </div>
+            <form action = "{{ url_for('log_in') }}" method = "POST">
+                <div class="form-group">
+                    <!-- <label for="nm">管理员账号:</label> -->
+                    <input type="text" name='nm'class="form-control" id="InputEmail1" aria-describedby="emailHelp" placeholder="管理员账号"> 
+                    
+                    <!-- <label for="mm">管理员密码:</label> -->
+                    <input type="password" name='mm' class="form-control" id="password" placeholder="管理员密码">
+                
+                <input value="登录" style="width:100%;" type="submit">
+            </form>
+        </div>
+         <div class="copyright">习惯追踪网页应用程序 版权所有©2019-2020 技术支持电话：888-8888888</div>
+    </div>     
+</body>
+</html>
